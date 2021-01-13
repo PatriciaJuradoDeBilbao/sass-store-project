@@ -1,0 +1,124 @@
+.slideshow {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+
+
+    &-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: inherit;
+        visibility: hidden;
+        opacity: 0;
+        animation: slideshow 20s linear infinite;
+
+        img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+    }
+
+    &-content {
+        background-color: rgba(color(secondary), .9);
+        position: absolute;
+        bottom: 6rem;
+        left: 6rem;
+        max-width: 40rem;
+        padding: 5rem;
+
+        h2 {
+            font-size: size(xl) + 1.2rem;
+            color: color(primary);
+        }
+
+        p {
+            margin: 1rem 0;
+            font-size: size(sm);
+        }
+    }
+}
+
+$animList: 1 0s, 2 4s, 3 8s, 4 12s, 5 16s;
+
+@each $item in $animList {
+    .slideshow-slide:nth-child(#{nth($item, 1)}) {
+        animation-delay: nth($item, 2);
+    }
+}
+
+@keyframes slideshow {
+    0% {
+        visibility: hidden;
+        opacity: 0;// .dropdown-li {
+            //     position: relative;
+                
+            //     &::after {
+            //         font-family: 'Font Awesome 5 Free';
+            //         content: "\f078";
+            //         font-weight: bold;
+            //     }
+                
+            //     &:hover .dropdown {
+            //         visibility: visible;
+            //         opacity: 1;
+            //     }
+            // }
+            
+            // .dropdown {
+            //     position: absolute;
+            //     top: 3rem;
+            //     right: -2.8rem;
+            //     width: 10rem;
+            //     background-color: darken(color(tertiary), 5%);
+            //     @include navigation;
+            //     padding: 1rem;
+            //     text-align: center;
+            //     border-radius: 0.2rem;
+            //     visibility: hidden;
+            //     opacity: 0;
+            //     transition: opacity .3s;
+                
+            //     &::before {
+            //         content: '';
+            //         display: block;
+            //         position: absolute;
+            //         top: -1.5rem;
+            //         left: 7.3rem;
+            //         border-right: 15px solid transparent;
+            //         border-bottom: 15px solid darken(color(tertiary), 5%);
+            //         border-left: 15px solid transparent;
+            //     }
+                
+            //     &-item {
+            //         margin: .5rem 0;
+            //     }
+                
+            //     &-link {
+            //         font-weight: 300;
+            //         font-size: size(xs);
+            //     }
+            // }
+            
+    }
+    2% {
+        visibility: visible;
+        opacity: 1;
+    }
+    18% {
+        visibility: visible;
+        opacity: 1;
+    }
+    20% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
