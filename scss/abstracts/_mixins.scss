@@ -5,6 +5,7 @@
         align-items: center;
         height: 100%;
     }
+    
     &-item {
         list-style: none;
     }
@@ -27,7 +28,6 @@
     align-items: $alignIte;
 }
 
-
 @mixin footerList {
     &-heading {
         font-size: size(lg);
@@ -47,6 +47,38 @@
 
         &:hover {
         color: lighten(color(primary), 35%);
+        }
+    }
+}
+
+@mixin response($breakpoint) {
+    @if($breakpoint == xl) {
+        @media(max-width: 1200px) {
+            @content;
+        }
+    }
+}
+
+@mixin response($breakpoint) {
+    @if($breakpoint == lg) {
+        @media(max-width: 1000px) {
+            @content;
+        }
+    }
+}
+
+@mixin response($breakpoint) {
+    @if($breakpoint == md) {
+        @media(max-width: 760px) {
+            @content;
+        }
+    }
+}
+
+@mixin response($breakpoint) {
+    @if($breakpoint == sm) {
+        @media(max-width: 560px) {
+            @content;
         }
     }
 }
